@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { add, getContacts } from 'redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/contactsSlice';
+import {addContact} from 'redux/operations.jsx'
 import { Button } from 'components/Button/Button';
 import {
   ContactFormStyled,
@@ -38,7 +39,7 @@ export default function ContactForm() {
     if (contacts?.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts.`);
     } else {
-      dispatch(add(newContact));
+      dispatch(addContact(newContact));
       resetForm();
     }
   };

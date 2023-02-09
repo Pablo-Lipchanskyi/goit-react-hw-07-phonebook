@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { remove, getContacts } from 'redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { getFilter } from 'redux/filter/filterSlice';
+import { fetchContacts } from 'redux/operations';
 import { ContactsListStyled } from './ContactsList.styled';
 import { ContactsListItem } from 'components/ContactsListItem/ContactsListItem';
 
@@ -20,6 +22,10 @@ export const ContactsList = () => {
 
   const visibleContacts = getVisibleContacts();
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   if (visibleContacts.length > 0) {
     return (
       <ContactsListStyled>
@@ -30,7 +36,7 @@ export const ContactsList = () => {
               id={id}
               name={name}
               number={number}
-              onDeleteButton={id => dispatch(remove(id))}
+              onDeleteButton={id => dispatch(deleteContact(id))}
             ></ContactsListItem>
           );
         })}
