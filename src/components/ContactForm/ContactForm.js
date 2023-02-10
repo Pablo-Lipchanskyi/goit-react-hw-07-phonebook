@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { add, getContacts } from 'redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/contactsSlice';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import {
@@ -36,7 +36,7 @@ export default function ContactForm() {
   const handleSubmit = event => {
     event.preventDefault();
     const newContact = { id: nanoid(5), name, number };
-    if (contacts?.some(contact => contact.name === name)) {
+    if (contacts.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts.`);
     } else {
       dispatch(addContact(newContact));
