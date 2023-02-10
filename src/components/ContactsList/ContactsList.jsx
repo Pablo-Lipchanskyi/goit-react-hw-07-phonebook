@@ -1,21 +1,26 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { getContacts } from 'redux/contacts/contactsSlice';
-import { deleteContact } from 'redux/operations';
 import { getFilter } from 'redux/filter/filterSlice';
-import { fetchContacts } from 'redux/operations';
 import { ContactsListStyled } from './ContactsList.styled';
 import { ContactsListItem } from 'components/ContactsListItem/ContactsListItem';
+import {
+  fetchContacts,
+  deleteContact,
+} from 'redux/contacts/contactsOperations';
 
 export const ContactsList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(normalizedFilter)
     );
@@ -23,25 +28,23 @@ export const ContactsList = () => {
 
   const visibleContacts = getVisibleContacts();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   if (visibleContacts.length > 0) {
     return (
-      <ContactsListStyled>
-        {visibleContacts.map(({ id, name, number }) => {
-          return (
-            <ContactsListItem
-              key={id}
-              id={id}
-              name={name}
-              number={number}
-              onDeleteButton={id => dispatch(deleteContact(id))}
-            ></ContactsListItem>
-          );
-        })}
-      </ContactsListStyled>
+      <>
+        <ContactsListStyled>
+          {visibleContacts.map(({ id, name, phone }) => {
+            return (
+              <ContactsListItem
+                key={id}
+                id={id}
+                name={name}
+                phone={phone}
+                onDeleteButton={id => dispatch(deleteContact(id))}
+              />
+            );
+          })}
+        </ContactsListStyled>
+      </>
     );
   }
 };
