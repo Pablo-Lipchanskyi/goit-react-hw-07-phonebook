@@ -7,11 +7,11 @@ export const StyledButton = styled.button`
   padding: 4px;
   border: 1px solid;
   border-radius: 3px;
-  background-color: #729599;
+  background-color: #07c;
   color: #fff;
   cursor: pointer;
   :hover {
-    background-color: #7a7067;
+    background-color: #05a;
   }
 `;
 
@@ -24,10 +24,10 @@ export const StyledDeleteButton = styled.button`
   padding: 4px;
   border: 1px solid;
   border-radius: 3px;
-  background-color: #729599;
+  background-color: #07c;
   color: #fff;
   cursor: pointer;
   :hover {
-    background-color: #7a7067;
+    background-color: red;
   }
 `;

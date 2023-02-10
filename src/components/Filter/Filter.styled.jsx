@@ -9,8 +9,6 @@ export const LabelFilterStyled = styled.label`
   min-width: 80px;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 8px;
-  color: #252f38;
   & > input {
     border: 1px solid black;
     border-radius: 3px;

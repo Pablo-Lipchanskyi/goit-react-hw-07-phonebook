@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contactsOperations';
+import { add, getContacts } from 'redux/contacts/contactsSlice';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import {
@@ -10,9 +11,9 @@ import {
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
-  const contacts = useSelector(fetchContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleInputChange = event => {
@@ -23,8 +24,8 @@ export default function ContactForm() {
         setName(value);
         break;
 
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
 
       default:
@@ -34,7 +35,7 @@ export default function ContactForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newContact = { name, phone };
+    const newContact = { id: nanoid(5), name, number };
     if (contacts?.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts.`);
     } else {
@@ -45,7 +46,7 @@ export default function ContactForm() {
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -67,8 +68,8 @@ export default function ContactForm() {
         Number
         <input
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleInputChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

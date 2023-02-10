@@ -4,34 +4,24 @@ export const ContactsListItemStyled = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
   max-width: 100%
-  /* margin-bottom: 5px; */
   padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #BCC5CE;
-  color: #729599;
-  & > svg{
-    margin: 0;
-    padding: 0;
-margin-right: 8px;
-  }
-  /* &::before {
+  color: #07c;
+  &::before {
     content: '';
     width: 10px;
-    height: 10px;
+    height: 8px;
     margin-right: 10px;
     border-radius: 50%;
-    background-color: #729599;
-  } */
+    background-color: #07c;
+  }
 `;
 
 export const InnerElementStyled = styled.span`
   display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: space-between;
   width: 100%;
+  padding-right: 20px;
   color: black;
-  font-size: 14px;
 `;
