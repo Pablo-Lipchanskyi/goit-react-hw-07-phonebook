@@ -7,8 +7,7 @@ import { Loader } from 'components/Loader/Loader';
 import { getLoadingStatus, getError } from 'redux/contacts/contactsSlice';
 import { MainStyled } from './Main.styled';
 import { FormWrapperStyled } from 'components/FormWrapper/FormWrapper.styled';
-import { ImageWrapper } from 'components/ImageWrapper/ImageWrapper';
-import ContactForm from 'components/ContactForm.jsx/ContactForm';
+import ContactForm from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 
@@ -27,7 +26,6 @@ export default function Main() {
         <ContactsList />
         {isLoading && <Loader />}
       </FormWrapperStyled>
-      <ImageWrapper />
       <Toaster />
     </MainStyled>
   );

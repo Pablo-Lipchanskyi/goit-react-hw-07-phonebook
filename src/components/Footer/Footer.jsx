@@ -9,7 +9,7 @@ export const Footer = () => {
     <FooterStyled>
       <FooterContentStyled>
         <FooterTextStyled>
-          © 2023 | All Rights Reserved | Developed by Ihor Havrylov
+          © 2023 | All Rights Reserved
         </FooterTextStyled>
       </FooterContentStyled>
     </FooterStyled>

@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/contacts/contactsSlice';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { Button } from 'components/Button/Button';
 import {
   ContactFormStyled,
   LabelInputStyled,
-} from 'components/ContactForm.jsx/ContactForm.styled';
+} from 'components/ContactForm/ContactForm.styled';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(fetchContacts);
   const dispatch = useDispatch();
 
   const handleInputChange = event => {
